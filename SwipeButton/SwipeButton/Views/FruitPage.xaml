@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:identifiers="clr-namespace:SwipeButton.Appearance"
+             x:Class="SwipeButton.Views.FruitPage"
+             x:Name="Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding FruitCollection}"
+                      HorizontalOptions="CenterAndExpand"
+                      VerticalOptions="CenterAndExpand"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Reveal">
+                                        <SwipeItemView BackgroundColor="OrangeRed" 
+                                                       Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Page} }"
+                                                       CommandParameter="{Binding .}">
+                                            <StackLayout Orientation="Horizontal" Spacing="0"
+                                                         VerticalOptions="CenterAndExpand"
+                                                         HorizontalOptions="FillAndExpand">
+                                                <Label FontFamily="{StaticResource Font_Example}"
+                                                       Text="{Static identifiers:ResourceIdentifiers.DeleteIcon}"
+                                                       TextColor="Black"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       Margin="10,0,0,0"/>
+                                                <Label Text="Delete" VerticalOptions="CenterAndExpand"
+                                                       Margin="10,0,15,0"/>
+                                            </StackLayout>
+                                        </SwipeItemView>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItemView BackgroundColor="LightGreen" VerticalOptions="CenterAndExpand"
+                                                       Command="{Binding BindingContext.AddFavoriteCommand, Source={x:Reference Page} }"
+                                                       CommandParameter="{Binding .}">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label FontFamily="{StaticResource Font_Example}"
+                                                       Text="{Static identifiers:ResourceIdentifiers.FavoriteIcon}"
+                                                       TextColor="Black"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       Margin="10,0,0,0"/>
+                                                <Label Text="Favorite" VerticalOptions="CenterAndExpand"
+                                                       Margin="10,0,15,0"/>
+                                            </StackLayout>
+                                        </SwipeItemView>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+
+                                <StackLayout Spacing="5"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="CenterAndExpand"
+                                             BackgroundColor="White">
+                                    <Label Text="{Binding Name}"
+                                           FontAttributes="Bold"
+                                           FontSize="14"
+                                           Margin="15,10,0,0" />
+                                    <Label Margin="15,0,0,10">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Price}" />
+                                                <Span Text=" Rs" />
+                                                <Span Text="/Kg" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Footer>
+                   <Label Text=""/>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
