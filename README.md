@@ -1,2 +1,2 @@
 # SwipeViewExample
-Use Swipe View inside the List View View Cell.
+Use `SwipeView` inside the `ListView` View Cell.
