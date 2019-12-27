@@ -6,4 +6,6 @@ Use `SwipeView` inside the `ListView` View Cell.
 Before use `SwipeView` need add the below line in `AppDelegate` class on iOS and `MainActivity` class on Android before `Forms.Init`.
 call.
 
+`Forms.SetFlags("SwipeView_Experimental");`
+
 
