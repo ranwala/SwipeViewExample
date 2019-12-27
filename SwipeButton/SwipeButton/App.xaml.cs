@@ -11,7 +11,7 @@ namespace SwipeButton
         {
             InitializeComponent();
 
-            MainPage = new FruitPage();
+            MainPage = new NavigationPage(new FruitPage());
         }
 
         protected override void OnStart()
